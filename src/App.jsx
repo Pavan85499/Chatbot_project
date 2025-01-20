@@ -5,9 +5,35 @@ import ChatMessage from './components/ChatMessage';
 const App = () => {
   const[chatHistory, setChatHistory] = useState([]);
 
-  const generationBotResponse = (setChatHistory) => {
-    console.log(setChatHistory);
-  };
+  const generationBotResponse = async(history) => {
+    const updateHistory = (text) => {
+      setChatHistory([...prev. filter(msg => msg.text !== "Thinkng..."), {role: 'model', text}]);
+    }
+      // Format the chat history for the API
+    history = history.map(({role, text}) => ({role, parts:[]}));
+    const requestOption = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({contents: history})
+  }
+  try {
+    const response = await fetch(import.meta.env.VITF_API_URL, requestOption);
+    const data = await response.json();
+    if(!response.ok) throw new Error(data.message || 'An error occurred');
+   
+    const apiResponeText = data.candidates[0].content.parts[0].text.replace(/<[^>]*>/g, ''); // remove html tags
+    trim();
+    updateHistory(apiResponeText);
+  } catch (error) {
+    console.log(error);
+    
+
+    }
+  } catch (error) {
+    
+  }
 
   return (
     <div className="container">
