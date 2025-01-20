@@ -31,9 +31,7 @@ const App = () => {
     
 
     }
-  } catch (error) {
-    
-  }
+  } 
 
   return (
     <div className="container">
@@ -63,7 +61,7 @@ const App = () => {
 
             {/* chatbot footer */}
             <div className="chat-footer">
-              <ChatForm setChatHistory={chatHistory} setChatHistory={setChatHistory} generationBotResponse={generationBotResponse}/>
+              <ChatForm setChatHistory={chatHistory} setChathistory={setChatHistory} generationBotResponse={generationBotResponse}/>
             </div>
         </div>
       </div>
