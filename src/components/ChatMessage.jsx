@@ -8,4 +8,4 @@ const ChatMessage = ({chat}) => {
         </div>
     );
     
-}``
+}
